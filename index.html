@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue static</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- https://vuejs.org/guide/quick-start.html#creating-a-vue-application -->
+
+</head>
+<body>
+    <header></header>
+<!-- JQ -->
+    <!-- <div id="div1"></div> -->
+    
+    <div id="appjq">
+        <input type="text" id="text1">
+        <h3 id="myh"></h3>
+    </div>
+
+<!-- vue -->
+    <!-- <div id="app">
+        {{message}}
+    </div> -->
+    <div id="app">
+        <input type="text" v-model="message">
+        {{message}}
+    </div>
+    <footer></footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+    // JQ寫法
+        // 1
+        // $('#div1').text("Hello Vue!!!")
+        // 2
+        $('#text1').keyup(function(){
+            $('#myh').text($('#text1').val())
+        })
+
+    // vue寫法
+        // 透過createApp函式建立vue物件再使用mount()方法綁定vue管理html的範圍
+        const { createApp } = Vue
+        // Vue大寫開頭
+        const app = createApp({
+            data(){
+                return{
+                    message:'Hello Vue!'
+                }
+            }
+        })
+        app.mount('#app')
+
+        const names =["Jack", "Mary", "Helen"];
+        const todos =[
+                        {"id": 1, "title": "作業1", "completed": false },
+                        {"id": 2, "title": "作業2", "completed": true },
+                        {"id": 3, "title": "作業3", "completed": false },
+                    ]
+        // for(let i=0, max=names.length; i<max; i++){
+
+        // }
+        // for(name in names){
+
+        // }
+        names.forEach((value, index)=>{
+            console.log(value);
+            console.log(index);
+        })
+        todos.forEach((value, index)=>{
+            console.log(value);
+            console.log(index);
+        })
+
+        // sessionStorage.setItem("key","value") //瀏覽器關掉或開其他分頁資料不會儲存
+        // localStorage.setItem("key","value") //可以儲存資料
+
+        // const a = "abc"
+        // let b = "aaa"
+        // console.log(a);
+        // b = "xyz"
+        // console.log(b);
+        // const不可以被改變
+
+    </script>
+    
+
+</body>
+</html>
